@@ -21,6 +21,15 @@ if(k1 == k2 && b1 == b2){
 } 
 else{
 X = (b2 - b1) / (k1 - k2);
-Y = k1 * X + b2;
+Y = k1 * (b2 - b1) / (k1 - k2) + b1;
 }
 Console.WriteLine($"b1 ={b1},k1 = {k1}, b2 = {b2}, k2 = {k2} -> ({X}; {Y})");
+
+// функция
+double[] GetPoint(double inb1, double ink1, double inb2, double ink2){
+    double[] result = new double[2]; // задали новый массив для 2 эл-в для результата вычислений координат
+    result[0] = (inb2 - inb1) / (ink1 - ink2);
+    result[1] = ink1 * (inb2 - inb1) / (ink1 - ink2) + inb1;
+    return result;
+}
+Console.WriteLine(String.Join(", ", GetPoint(b1, k1, b2, k2)));
